@@ -1,5 +1,5 @@
 # mamma_maglioni
-Proyecto 2 elaborado Django para la electiva Programación con Python.
+Proyecto 2 elaborado en Django para la electiva Programación con Python.
 
 # Integrantes
 - Brito, Amelia
