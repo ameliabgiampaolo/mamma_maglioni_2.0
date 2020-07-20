@@ -8,7 +8,7 @@ class Cliente(models.Model):
 class Pedido(models.Model):
     id = models.IntegerField(primary_key=True)
     fecha = models.DateField('fecha del pedido')
-    precio_total = models.DecimalField(max_digits=4, decimal_places=2)
+    precio_total = models.DecimalField(max_digits=8, decimal_places=2)
     fk_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
 class Ingrediente(models.Model):
