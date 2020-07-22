@@ -13,7 +13,7 @@ class Pedido(models.Model):
     fk_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '#' + str(self.id) + ' | ' + self.fecha + ' | ' + self.precio_total + ' | ' + self.fk_cliente
+        return '#' + str(self.id) + ' | ' + self.fecha + ' | ' + str(self.precio_total) + ' | ' + self.fk_cliente
  
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=12)
@@ -39,4 +39,4 @@ class Pizza_ing(models.Model):
     fk_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '#' + str(self.id) + ' | fk_pizza = ' + self.fk_pizza + ' | fk_ingrediente = ' + self.fk_ingrediente + ' | fk_pedido = ' + self.fk_pedido
+        return '#' + str(self.id) + ' | fk_pizza = ' + str(self.fk_pizza) + ' | fk_ingrediente = ' + str(self.fk_ingrediente) + ' | fk_pedido = ' + str(self.fk_pedido)
