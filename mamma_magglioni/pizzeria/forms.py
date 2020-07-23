@@ -4,23 +4,25 @@ from .models import Pizza
 class OrderPizzaForm(forms.Form):
 
     OPTIONS = (
-        ("PP", "Pizza Personal"),
-        ("PM", "Pizza Mediana"),
-        ("PG", "Pizza Grande"),
-            )
-    Pizzas = forms.ChoiceField(widget=forms.RadioSelect,choices=OPTIONS)
+        (1, "Pizza Personal"),
+        (2, "Pizza Mediana"),
+        (3, "Pizza Grande"),
+    )
+
+    pizzas = forms.ChoiceField(widget=forms.RadioSelect,choices=OPTIONS)
 
 class OrderIngredienteForm(forms.Form):
 
     OPTIONS = (
-        ("JA", "Jamon"),
-        ("CH", "Champiñones"),
-        ("PI", "Pimenton"),
-        ("DQ", "Doble Queso"),
-        ("PE", "Pepperoni"),
-        ("AC", "Aceitunas"),
-        ("SA", "Salchichon"),
-            )
-    Ingredientes = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS)
+        (1, "Jamon"),
+        (2, "Champiñones"),
+        (3, "Pimenton"),
+        (4, "Doble Queso"),
+        (5, "Pepperoni"),
+        (6, "Aceitunas"),
+        (7, "Salchichon"),
+    )
+
+    ingredientes = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS)
 
     

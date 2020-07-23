@@ -55,24 +55,19 @@
 </section>
 
 <section class="story-area left-text center-sm-text">
-    <div class="container">
-            <div class="heading"><h3>Selecciona el tamaño de tu pizza</h3></div>
-                <form method='post'>
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <input type='submit' value='submit'>
-                </form>
-               
-                <div class="container">
-                        <div class="heading"><h3>Selecciona los ingredientes</h3></div>
-                        <form method='post'>
-                                        {% csrf_token %}
-                                        {{ form2.as_p }}
-                                        <input type='submit' value='submit'>
-                                </form>
-                </div><!-- container -->
-        </div>
-    </div><!-- container -->
+        <div class="container">
+                <div class="heading"><h3>Selecciona el tamaño de tu pizza</h3></div>
+                        <form action="" method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <div class="container">
+                                <div class="heading"><h3>Selecciona los ingredientes</h3></div>
+                                {{ form2.as_p }}
+                                <input type="submit" value="submit">
+                                </div>
+                        </form>
+                </div>
+        </div><!-- container -->
 </section>
 
 
