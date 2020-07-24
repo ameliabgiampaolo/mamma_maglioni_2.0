@@ -1,0 +1,14 @@
+{% extends "pizzeria/base.html" %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="container">
+            <div class="heading">
+                    <img class="heading-img" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
+                    <h2>Resumen de tu pedido</h2>
+                    {{cliente}}
+            </div>
+    </div>
+</section>
+{% endblock content %}

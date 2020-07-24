@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('order', views.order, name='order'),
+    path('resumen/<int:pedido_id>', views.resumen, name='resumen'),
 ]

@@ -35,10 +35,16 @@ def order(request):
         else:
             pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizzas),None,pedido)
 
-        return redirect('/pizzeria/')
+        return redirect('resumen', pedido.id)
     else:
         form_pizza = OrderPizzaForm
         form_ingrediente = OrderIngredienteForm
         form_client = ClientForm
 
     return render(request, 'pizzeria/order_form.html', { 'form':form_pizza, 'form2':form_ingrediente, 'form3': form_client })
+
+def resumen(request, pedido_id):
+    pedido = Pedido.objects.get(id=pedido_id)
+    cliente = pedido.fk_cliente_id
+    context = {'cliente': cliente}
+    return render(request, 'pizzeria/resumen.html', context)
