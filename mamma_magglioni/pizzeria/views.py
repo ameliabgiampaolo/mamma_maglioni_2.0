@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import OrderPizzaForm, OrderIngredienteForm
+from .forms import OrderPizzaForm, OrderIngredienteForm, ClientForm
 from .models import Pedido, Pizza_ing, Cliente, Pizza, Ingrediente
 import datetime
 
@@ -14,13 +14,19 @@ def order(request):
     if request.method == 'POST':
         form_pizza = OrderPizzaForm(request.POST)
         form_ingrediente = OrderIngredienteForm(request.POST)
+        form_client = ClientForm(request.POST)
+
         if form_pizza.is_valid():
             pizzas = form_pizza.cleaned_data.get('pizzas')
+        
         if form_ingrediente.is_valid():
             ingredientes = form_ingrediente.cleaned_data.get('ingredientes')
             ingrediente = True
 
-        cliente = Cliente.objects.create_cliente('Victor', 'Garcia')
+        if form_client.is_valid():
+            cliente = form_client.save() 
+
+
         pedido = Pedido.objects.create_pedido(now, cliente)
 
         if ingrediente == True:
@@ -33,5 +39,6 @@ def order(request):
     else:
         form_pizza = OrderPizzaForm
         form_ingrediente = OrderIngredienteForm
+        form_client = ClientForm
 
-    return render(request, 'pizzeria/order_form.html', { 'form':form_pizza, 'form2':form_ingrediente })
+    return render(request, 'pizzeria/order_form.html', { 'form':form_pizza, 'form2':form_ingrediente, 'form3': form_client })

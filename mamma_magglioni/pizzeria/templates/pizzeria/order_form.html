@@ -6,6 +6,7 @@
         {% bootstrap_css %}
         {% load static %}
 
+
         <title>Mama Magglione</title>
         <link rel="icon" href="{% static "pizzeria/images/heading_logo.png" %}" type="image/png" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -165,6 +166,13 @@
                                         </div><!-- food-menu -->
                 
                                 </div><!-- row-->
+                                <br></br>
+                                        <div class="container">
+                                                <div class="heading"><h3>Datos Personales</h3></div>
+                                        </div>
+                                        {{ form3.as_table }}
+                                <br></br>
+
                                 <input type="submit" class="btn btn-primary" value="Agregar otra pizza">
                                 <input type="submit" class="btn btn-success" value="Ordenar">
                         </form>

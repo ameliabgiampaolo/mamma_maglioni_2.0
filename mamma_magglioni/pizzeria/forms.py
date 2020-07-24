@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pizza
+from .models import Pizza, Cliente
 
 class OrderPizzaForm(forms.Form):
 
@@ -25,4 +25,8 @@ class OrderIngredienteForm(forms.Form):
 
     ingredientes = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS)
 
-    
+class ClientForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = ['nombre', 'apellido']
+
