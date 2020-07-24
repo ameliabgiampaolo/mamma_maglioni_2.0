@@ -61,7 +61,7 @@ class Pizza_ingManager(models.Manager):
 
 class Pizza_ing(models.Model):
     fk_pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-    fk_ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
+    fk_ingrediente = models.ForeignKey(Ingrediente, null=True, blank=True, on_delete=models.CASCADE)
     fk_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     objects = Pizza_ingManager()
 

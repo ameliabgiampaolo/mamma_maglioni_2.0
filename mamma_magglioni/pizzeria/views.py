@@ -9,6 +9,7 @@ def index(request):
     return render(request, 'pizzeria/index.html', context)
 
 def order(request):
+    ingrediente = False
     now = datetime.date.today()
     if request.method == 'POST':
         form_pizza = OrderPizzaForm(request.POST)
@@ -17,12 +18,16 @@ def order(request):
             pizzas = form_pizza.cleaned_data.get('pizzas')
         if form_ingrediente.is_valid():
             ingredientes = form_ingrediente.cleaned_data.get('ingredientes')
+            ingrediente = True
 
         cliente = Cliente.objects.create_cliente('Victor', 'Garcia')
         pedido = Pedido.objects.create_pedido(now, cliente)
 
-        for i in range(len(ingredientes)):
-            pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizzas), Ingrediente.objects.get(id=ingredientes[i]), pedido)
+        if ingrediente == True:
+            for i in range(len(ingredientes)):
+                pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizzas), Ingrediente.objects.get(id=ingredientes[i]), pedido)
+        else:
+            pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizzas),None,pedido)
 
         return redirect('/pizzeria/')
     else:

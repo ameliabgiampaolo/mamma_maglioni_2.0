@@ -57,12 +57,116 @@
 <section class="story-area left-text center-sm-text">
         <div class="container">
                 <div class="heading"><h3>Selecciona el tamaño de tu pizza</h3></div>
+                <div class="row">
+                        <div class="col-lg-4 col-md-4  col-sm-6 ">
+                                <div class="center-text mb-30">
+                                        <div class="ïmg-200x mlr-auto pos-relative">
+                                                <img src="{% static "pizzeria/images/descarga.jpg" %}" alt="">
+                                        </div>
+                                        <h5 class="mt-20">Pizza Personal</h5>
+                                        <h4 class="mt-5 color-primary"><b>BsS10.00</b></h4>
+                                </div><!--text-center-->
+                        </div><!-- col-md-3 -->
+                        <div class="col-lg-3 col-md-4  col-sm-6 ">
+                                <div class="center-text mb-30">
+                                        <div class="ïmg-200x mlr-auto pos-relative">
+                                                <img src="{% static "pizzeria/images/mediana200x200.png" %}" alt="">
+                                        </div>
+                                        <h5 class="mt-20">Pizza Mediana</h5>
+                                        <h4 class="mt-5 color-primary"><b>BsS16.00</b></h4>
+                                </div><!--text-center-->
+                        </div><!-- col-md-3 -->
+                        <div class="col-lg-3 col-md-4  col-sm-6 ">
+                                <div class="center-text mb-30">
+                                        <div class="ïmg-200x mlr-auto pos-relative">
+                                                <img src="{% static "pizzeria/images/grande200x200.jpg" %}" alt="">
+                                        </div>
+                                        <h5 class="mt-20">Pizza Grande</h5>
+                                        <h4 class="mt-5 color-primary"><b>BsS20.00</b></h4>
+                                </div><!--text-center-->
+                        </div><!-- col-md-3 -->
+                </div><!-- row -->
                         <form action="" method="post">
                                 {% csrf_token %}
                                 {{ form.as_p }}
+                                <br></br>
                                 <div class="heading"><h3>Selecciona los ingredientes</h3></div>
                                 {{ form2.as_p }}
-                                <input type="submit" value="submit">
+                                <br></br>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                                <div class="sided-90x mb-30 ">
+                                                        <div class="s-left"><img class="br-3" src="{% static "pizzeria/images/jamon.jpg" %}" alt="Menu Image"></div><!--s-left-->
+                                                        <div class="s-right">
+                                                                <h5 class="mb-10"><b>Jamón</b><b class="color-primary float-right">BsS4.00</b></h5>
+                                                                <p class="pr-70">Maecenas fermentum tortor id fringilla molestie. In hac habitasse platea dictumst. </p>
+                                                        </div><!--s-right-->
+                                                </div><!-- sided-90x -->
+                                        </div><!-- food-menu -->
+                
+                                        <div class="col-md-6">
+                                                <div class="sided-90x mb-30">
+                                                        <div class="s-left"><img class="br-3" src="{% static "pizzeria/images/champi.jpg" %}" alt="Menu Image"></div><!--s-left-->
+                                                        <div class="s-right">
+                                                                <h5 class="mb-10"><b>Champiñones</b><b class="color-primary float-right">BsS3.50</b></h5>
+                                                                <p class="pr-70">Proin dictum viverra varius. Etiam vulputate libero dui, at pretium elit elementum quis. </p>
+                                                        </div><!--s-right-->
+                                                </div><!-- sided-90x -->
+                                        </div><!-- food-menu -->
+                
+                                        <div class="col-md-6">
+                                                <div class="sided-90x mb-30">
+                                                        <div class="s-left"><img class="br-3" src="{% static "pizzeria/images/pimenton.jpg" %}" alt="Menu Image"></div><!--s-left-->
+                                                        <div class="s-right">
+                                                                <h5 class="mb-10"><b>Pimentón</b><b class="color-primary float-right">BsS3.00</b></h5>
+                                                                <p class="pr-70">Proin dictum viverra varius. Etiam vulputate libero dui, at pretium elit elementum quis. </p>
+                                                        </div><!--s-right-->
+                                                </div><!-- sided-90x -->
+                                        </div><!-- food-menu -->
+                
+                                        <div class="col-md-6">
+                                                <div class="sided-90x mb-30">
+                                                        <div class="s-left"><img class="br-3" src="{% static "pizzeria/images/doblequeso.jpg" %}" alt="Menu Image"></div><!--s-left-->
+                                                        <div class="s-right">
+                                                                <h5 class="mb-10"><b>Doble Queso</b><b class="color-primary float-right">BsS4.00</b></h5>
+                                                                <p class="pr-70">Proin dictum viverra varius. Etiam vulputate libero dui, at pretium elit elementum quis. </p>
+                                                        </div><!--s-right-->
+                                                </div><!-- sided-90x -->
+                                        </div><!-- food-menu -->
+                
+                                        <div class="col-md-6">
+                                                <div class="sided-90x mb-30">
+                                                        <div class="s-left"><img class="br-3" src="{% static "pizzeria/images/aceituna.jpg" %}" alt="Menu Image"></div><!--s-left-->
+                                                        <div class="s-right">
+                                                                <h5 class="mb-10"><b>Aceitunas</b><b class="color-primary float-right">BsS5.75</b></h5>
+                                                                <p class="pr-70">Proin dictum viverra varius. Etiam vulputate libero dui, at pretium elit elementum quis. </p>
+                                                        </div><!--s-right-->
+                                                </div><!-- sided-90x -->
+                                        </div><!-- food-menu -->
+                
+                                        <div class="col-md-6">
+                                                <div class="sided-90x mb-30"> 
+                                                        <div class="s-left"><img class="br-3" src="{% static "pizzeria/images/pepperoni.jpg" %}" alt="Menu Image"></div><!--s-left-->
+                                                        <div class="s-right">
+                                                                <h5 class="mb-10"><b>Pepperoni</b><b class="color-primary float-right">BsS3.85</b></h5>
+                                                                <p class="pr-70">Proin dictum viverra varius. Etiam vulputate libero dui, at pretium elit elementum quis. </p>
+                                                        </div><!--s-right-->
+                                                </div><!-- sided-90x -->
+                                        </div><!-- food-menu -->
+                
+                                        <div class="col-md-6">
+                                                <div class="sided-90x mb-30">
+                                                        <div class="s-left"><img class="br-3" src="{% static "pizzeria/images/salchichon.jpg" %}" alt="Menu Image"></div><!--s-left-->
+                                                        <div class="s-right">
+                                                                <h5 class="mb-10"><b>Salchichón</b><b class="color-primary float-right">BsS6.25</b></h5>
+                                                                <p class="pr-70">Proin dictum viverra varius. Etiam vulputate libero dui, at pretium elit elementum quis. </p>
+                                                        </div><!--s-right-->
+                                                </div><!-- sided-90x -->
+                                        </div><!-- food-menu -->
+                
+                                </div><!-- row-->
+                                <input type="submit" class="btn btn-primary" value="Agregar otra pizza">
+                                <input type="submit" class="btn btn-success" value="Ordenar">
                         </form>
                 </div>
         </div><!-- container -->
