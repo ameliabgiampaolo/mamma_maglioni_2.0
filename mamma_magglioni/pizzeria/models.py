@@ -14,9 +14,6 @@ class Cliente(models.Model):
     def __str__(self):
         return '#' + str(self.id) + ' | ' + self.nombre + ' | ' + self.apellido
 
-    def id(self):
-        return self.id
-
 class PedidoManager(models.Manager):
     def create_pedido(self, fecha, fk_cliente):
         pedido = self.create(fecha=fecha, fk_cliente=fk_cliente)
@@ -31,9 +28,6 @@ class Pedido(models.Model):
 
     def __str__(self):
         return '#' + str(self.id) + ' | ' + self.fecha + ' | fk_cliente = ' + str(self.fk_cliente)
-
-    def id(self):
-        return self.id
  
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=12)
