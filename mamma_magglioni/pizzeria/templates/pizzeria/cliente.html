@@ -57,47 +57,18 @@
 
 <section class="story-area left-text center-sm-text">
         <div class="container">
-                <div class="heading"><h3>Selecciona el tamaño de tu pizza</h3></div>
-                <div class="row">
-                        <div class="col-lg-4 col-md-4  col-sm-6 ">
-                                <div class="center-text mb-30">
-                                        <div class="ïmg-200x mlr-auto pos-relative">
-                                                <img src="{% static "pizzeria/images/descarga.jpg" %}" alt="">
-                                        </div>
-                                        <h5 class="mt-20">Pizza Personal</h5>
-                                        <h4 class="mt-5 color-primary"><b>BsS10.00</b></h4>
-                                </div><!--text-center-->
-                        </div><!-- col-md-3 -->
-                        <div class="col-lg-3 col-md-4  col-sm-6 ">
-                                <div class="center-text mb-30">
-                                        <div class="ïmg-200x mlr-auto pos-relative">
-                                                <img src="{% static "pizzeria/images/mediana200x200.png" %}" alt="">
-                                        </div>
-                                        <h5 class="mt-20">Pizza Mediana</h5>
-                                        <h4 class="mt-5 color-primary"><b>BsS16.00</b></h4>
-                                </div><!--text-center-->
-                        </div><!-- col-md-3 -->
-                        <div class="col-lg-3 col-md-4  col-sm-6 ">
-                                <div class="center-text mb-30">
-                                        <div class="ïmg-200x mlr-auto pos-relative">
-                                                <img src="{% static "pizzeria/images/grande200x200.jpg" %}" alt="">
-                                        </div>
-                                        <h5 class="mt-20">Pizza Grande</h5>
-                                        <h4 class="mt-5 color-primary"><b>BsS20.00</b></h4>
-                                </div><!--text-center-->
-                        </div><!-- col-md-3 -->
-                </div><!-- row -->
                 <form class="form-horizontal" method="POST" action="">
                         {% csrf_token %}
-                        {{ formset.management_form }}
-                        {% for form in formset %}
-                        {% for pizzas in form.pizzas %}
-                        <label for="{{ pizzas.id_for_label }}">
-                                <span class="pizzas">{{ pizzas.tag }}</span>
-                                {{ pizzas.choice_label }}
-                        </label>
-                        {% endfor %}
-                        {% endfor %}
+                        <div class="row form-row spacer">
+                            <div class="col-2">
+                                <label></label>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    {{form.as_p}}
+                                </div>
+                            </div>
+                        </div>
                         <div class="row spacer">
                             <div class="col-4 offset-2">
                                 <button type="submit" class="btn btn-block btn-primary">Create</button>
