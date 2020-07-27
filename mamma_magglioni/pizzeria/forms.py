@@ -21,7 +21,7 @@ class OrderForm(forms.Form):
         (7, "Salchichon"),
     )
 
-    ingredientes = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS2, required=False)
+    ingredientes = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS2)
 
 class ClientForm(forms.Form):
     OPTIONS = (
