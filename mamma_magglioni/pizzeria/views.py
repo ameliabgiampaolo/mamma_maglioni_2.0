@@ -49,3 +49,6 @@ def resumen(request, pedido_id):
     pizza_ing = Pizza_ing.objects.filter(fk_pedido_id=pedido_id) #filter lo uso para traer varios registros de la bd, varias pizza_ing con ese pedido
     context = {'cliente': cliente, 'pedido': pedido, 'pizza_ing': pizza_ing}
     return render(request, 'pizzeria/resumen.html', context)
+
+def finalizar(request):
+    return render(request, 'pizzeria/finalizar.html')

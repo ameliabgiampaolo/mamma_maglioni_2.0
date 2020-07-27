@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <!-- Cargando librerias para bootstrap 4 -->
+        {% load bootstrap4 %}
+        {% bootstrap_css %}
+        {% load static %}
+
+
+        <title>Mama Magglione</title>
+        <link rel="icon" href="{% static "pizzeria/images/heading_logo.png" %}" type="image/png" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+        <link rel="stylesheet" href="{% static "pizzeria/fonts/beyond_the_mountains-webfont.css" %}" type="text/css"/>
+
+        <!-- Stylesheets -->
+        <link href="{% static "pizzeria/plugin-frameworks/bootstrap.min.css" %}" rel="stylesheet">
+        <link href="{% static "pizzeria/plugin-frameworks/swiper.css" %}" rel="stylesheet">
+        <link href="{% static "pizzeria/fonts/ionicons.css" %}" rel="stylesheet">
+        <link href="{% static "pizzeria/common/styles.css" %}" rel="stylesheet">
+</head>
+
+<body>
+{% block content %}
+
+<section class="story-area bg-seller color-white pos-relative">
+        <div class="pos-bottom triangle-up"></div>
+        <div class="pos-top triangle-bottom"></div>
+        <div class="container">
+                <div class="heading">
+                        <img class="heading-img" src="images/heading_logo.png" alt="">
+                        <h2>¡Gracias!</h2>
+                        <h4>Tu pizza está siendo preparada.</h4>
+                </div>
+
+                <div class="swiper-container" data-slide-effect="slide" data-autoheight="false" data-swiper-speed="500" data-swiper-margin="25" data-swiper-slides-per-view="3"
+                     data-swiper-breakpoints="true" data-scrollbar="true" data-swiper-loop="true" data-swpr-responsive="[1, 2, 2, 2]">
+
+                        <div class="swiper-wrapper pb-90 pb-sm-60 left-text center-sm-text">
+                                <div class="swiper-slide">
+                                        <h4>La mejor pizza</h4>
+                                        <p class="color-ash mb-50 mb-sm-30 mt-20">Excelente. Nunca había probado una pizza de tal magnitud. El jamón es muy
+                                            fresco y el queso tiene un sabor particular, un sabor que solo Mama Magglione puede conseguir.
+                                        </p>
+                                        <img class="circle-60 mb-20 " src="{% static "pizzeria/images/amelia200x200.jpg" %}" alt="">
+                                        <h6><b class="color-primary">Amelia Brito</b>,<b class="color-ash">Cliente</b>
+                                        </h6>
+                                </div><!-- swiper-slide -->
+
+                                <div class="swiper-slide">
+                                        <h4>Se me hace agua a la boca</h4>
+                                        <p class="color-ash mb-50 mb-sm-30 mt-20">El salchichón es increíble,
+                                            jamás pensé que me gustara tanto. Mis máximas recomendaciones
+                                            a este restaurante, definitivamente son 100% italianos.
+                                        </p>
+                                        <img class="circle-60 mb-20" src="{% static "pizzeria/images/victor200x200.jpg" %}" alt="">
+                                        <h6><b class="color-primary">Víctor García</b>,<b class="color-ash">Cliente</b>
+                                        </h6>
+                                </div><!-- swiper-slide -->
+
+                                <div class="swiper-slide">
+                                        <h4>Viva Mama Magglione</h4>
+                                        <p class="color-ash mb-50 mb-sm-30 mt-20">La combinación perfecta entre
+                                            el queso y el salchichón es increíble. Mama Magglione prepara la mejor
+                                            salsa que te puedas imaginar. Buen ambiente, buena música, buena comida.
+                                        </p>
+                                        <img class="circle-60 mb-20" src="{% static "pizzeria/images/daren200x200.jpg" %}"
+                                             alt="">
+                                        <h6><b class="color-primary">Daren González</b>,<b
+                                                class="color-ash">Cliente</b></h6>
+                                </div><!-- swiper-slide -->
+
+                                <div class="swiper-slide">
+                                        <h4>Excelente servicio</h4>
+                                        <p class="color-ash mb-50 mb-sm-30 mt-20">Me atendieron de lo mejor, pedí una pizza
+                                            familiar y tres personales, y debo decir, que ninguna pizza se quedó atrás, deben
+                                            probar la de doble queso. Increíble, de verdad.
+                                        </p>
+                                        <img class="circle-60 mb-20"
+                                             src="{% static "pizzeria/images/rafael200x200.jpg" %}" alt="">
+                                        <h6><b class="color-primary">Rafael Jiménez</b>,<b class="color-ash">Cliente</b>
+                                        </h6>
+                                </div><!-- swiper-slide -->
+                        </div><!-- swiper-wrapper -->
+
+                        <div class="swiper-pagination"></div>
+                </div><!-- swiper-container -->
+        </div><!-- container -->
+</section>
+<h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="http://localhost:8000/pizzeria" class="btn-primaryc plr-25"><b>Home</b></a></h6>
+{% endblock content %}
+
+<!-- SCIPTS -->
+<script src="{% static "pizzeria/plugin-frameworks/jquery-3.2.1.min.js" %}"></script>
+<script src="{% static "pizzeria/plugin-frameworks/bootstrap.min.js" %}"></script>
+<script src="{% static "pizzeria/plugin-frameworks/swiper.js" %}"></script>
+<script src="{% static "pizzeria/common/scripts.js" %}"></script>
+
+<!-- JS y jQuery Bootstrap -->
+{% bootstrap_javascript jquery='full' %}
+</body>
+</html>
