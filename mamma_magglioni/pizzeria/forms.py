@@ -9,7 +9,7 @@ class OrderForm(forms.Form):
         (3, "Pizza Grande"),
     )
 
-    pizzas = forms.ChoiceField(widget=forms.RadioSelect,choices=OPTIONS)
+    pizza = forms.ChoiceField(widget=forms.RadioSelect,choices=OPTIONS)
 
     OPTIONS2 = (
         (1, "Jamon"),
@@ -21,9 +21,9 @@ class OrderForm(forms.Form):
         (7, "Salchichon"),
     )
 
-    ingredientes = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS2)
+    ingredientes = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS2, required=False)
 
-class ClientForm(forms.Form):
+class ClienteForm(forms.Form):
     OPTIONS = (
         (1, '1'),
         (2, '2'),

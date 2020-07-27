@@ -48,8 +48,8 @@ class Pizza(models.Model):
         return '#' + str(self.id) + ' | ' + self.size + ' | ' + str(self.precio)
 
 class Pizza_ingManager(models.Manager):
-    def create_pizza_ing(self, fk_pizza, fk_ingrediente, fk_pedido):
-        pizza_ing = self.create(fk_pizza=fk_pizza, fk_ingrediente=fk_ingrediente, fk_pedido=fk_pedido)
+    def create_pizza_ing(self, fk_pizza, fk_ingrediente, fk_pedido, num_pizza):
+        pizza_ing = self.create(fk_pizza=fk_pizza, fk_ingrediente=fk_ingrediente, fk_pedido=fk_pedido, num_pizza=num_pizza)
         pizza_ing.save()
         return pizza_ing
 
@@ -57,6 +57,7 @@ class Pizza_ing(models.Model):
     fk_pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     fk_ingrediente = models.ForeignKey(Ingrediente, null=True, blank=True, on_delete=models.CASCADE)
     fk_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    num_pizza = models.IntegerField(default=1)
     objects = Pizza_ingManager()
 
     def __str__(self):

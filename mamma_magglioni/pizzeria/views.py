@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
-from .forms import OrderForm, ClientForm
+from .forms import OrderForm, ClienteForm
 from .models import Pedido, Pizza_ing, Cliente, Pizza, Ingrediente
 from django.forms import formset_factory
 import datetime
@@ -11,27 +11,36 @@ def index(request):
 
 def cliente(request):
     if request.method == 'POST':
-        form = ClientForm(request.POST)
+        form = ClienteForm(request.POST)
         if form.is_valid():
             cliente = Cliente.objects.create_cliente(form.cleaned_data.get('nombre'), form.cleaned_data.get('apellido'))
             return redirect('order', cliente.id, form.cleaned_data.get('cantidad'))
     else:
-        form = ClientForm()
+        form = ClienteForm()
 
     return render(request, 'pizzeria/cliente.html', { 'form': form })
 
 def order(request, cliente_id, cantidad):
-    now = datetime.date.today()
-    x = cantidad
-    OrderFormset = formset_factory(OrderForm,extra=x)
+    date = datetime.date.today()
+    OrderFormset = formset_factory(OrderForm,extra=cantidad)
+    aux = 1 #variable para controlar cada pizza
+
     if request.method == 'POST':
-        formset = OrderFormset(request.POST, request.FILES)
+        formset = OrderFormset(request.POST)
         if formset.is_valid():
+            pedido = Pedido.objects.create_pedido(date, Cliente.objects.get(id=cliente_id))
             for form in formset:
-                print(form.cleaned_data.get('pizzas')) 
-                print(form.cleaned_data.get('ingredientes')) 
+                pizza = form.cleaned_data.get('pizza')
+                ingredientes = form.cleaned_data.get('ingredientes') 
+                if ingredientes != []:
+                    for i in range(len(ingredientes)):
+                        pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), Ingrediente.objects.get(id=ingredientes[i]), pedido, aux)
+                else:
+                    pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), None, pedido, aux)
+
+                aux += aux
             
-            return redirect('resumen', 3)
+            return redirect('resumen', pedido.id)
     else:
         formset = OrderFormset()
 
