@@ -7,6 +7,7 @@
         {% load static %}
 
 
+
         <title>Mama Magglione</title>
         <link rel="icon" href="{% static "pizzeria/images/heading_logo.png" %}" type="image/png" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,52 +66,79 @@
                     <th><strong>Fecha</strong></th>
                     <th>{{pedido.fecha}}</th>
                     <br></br>
-                    
-                    <table class="table table-striped">  
-                        <thead class="thead-dark">
-                                <tr>
-                                        <th scope="col">Cliente</th>
-                                        <th scope="col">Pizzas</th>
-                                        <th scope="col">Ingredientes</th>         
-                                </tr>
-                        </thead>
-                        <tbody>
-                                <tr>
-                                        <th scope="row">{{cliente.nombre|add:" "|add:cliente.apellido}}</th>
-                                        
-                                        {% for pizza in pizza_ing %}
-                                        {% if pizza.fk_pizza_id == 1 and listo == None %}                               
-                                        <th>Personal</th>
-                                        {% elif pizza.fk_pizza_id == 2 %}
-                                        <th>Mediana</th>
-                                        {% else %}
-                                        <th>Familiar</th>
-                                        {% endif %}
-                                       
-                                        {% if pizza.fk_ingrediente_id == 1 %} 
-                                        <th>Jamón</th>
-                                        {% elif pizza.fk_ingrediente_id == 2 %}
-                                        <th>Champiñón</th>
-                                        {% elif pizza.fk_ingrediente_id == 3 %}
-                                        <th>Pimentón</th>
-                                        {% elif pizza.fk_ingrediente_id == 4 %}
-                                        <th>Doble queso</th>
-                                        {% elif pizza.fk_ingrediente_id == 5 %}
-                                        <th>Aceituna</th>
-                                        {% elif pizza.fk_ingrediente_id == 6 %}
-                                        <th>Pepperoni</th>
-                                        {% elif pizza.fk_ingrediente_id == 7 %}
-                                        <th>Salchichón</th>
-                                        {% else%}
-                                        <th>Sin ingredientes</th>
-                                        {% endif %}
-                                </tr>
+                
+                                        {% load common %}
+                                        {% set num = 0 %}
+                                        {% set aux = 0 %} 
 
-                                        <th scope="row"></th>
-                                        {% endfor %}
-                        </tbody>
-                    </table>
-                    <h5 ><b class="color-primary float-left">BsS.</b></h5>
+
+
+                    
+                                <table class="table table-bordered">
+
+                                <thead>
+                                  <tr>
+                                    <th scope="col-md-21">Cliente</th>
+                                    <th colspan="21" >Pizzas</th>
+                                    
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                                <tr>
+                                   <th rowspan="21">{{cliente.nombre|add:" "|add:cliente.apellido}}</th> 
+                                   {% for pizza in pizza_ing %}
+                                   {% if pizza.num_pizza != num %}
+                                   {% set num = pizza.num_pizza %}
+                                        {% if pizza.fk_pizza_id == 1  %} 
+                                                     
+                                        <th rowspan="4">Personal</th> 
+                    
+                                        {% elif pizza.fk_pizza_id == 2 %}
+                                     
+                                        <th rowspan="4">Mediana</th>
+                                        
+                    
+                                        {% elif pizza.fk_pizza_id == 3 %}
+                                      
+                                        <th rowspan="4">Familiar</th>
+                                        
+                                       
+                                        {% endif %}
+                                        {% endif %}
+
+                                  </tr>
+                                 
+                                  <tr>
+                                                {% if pizza.fk_ingrediente_id == 1 %} 
+                                                <td>Jamón</td>
+                                                
+                                                {% elif pizza.fk_ingrediente_id == 2 %}
+                                                <td>Champiñón</td>
+                                                
+                                                {% elif pizza.fk_ingrediente_id == 3 %}
+                                                <td>Pimentón</td>
+                                                
+                                                {% elif pizza.fk_ingrediente_id == 4 %}
+                                                <td>Doble queso</td>
+                                                
+                                                {% elif pizza.fk_ingrediente_id == 5 %}
+                                                <td>Aceituna</td>
+                                                
+                                                {% elif pizza.fk_ingrediente_id == 6 %}
+                                                <td>Pepperoni</td>
+                                                
+                                                {% elif pizza.fk_ingrediente_id == 7 %}
+                                                <td>Salchichón</td>
+                                                
+                                                {% else%}
+                                                <td>Sin ingredientes</td>
+                                                {% endif %}
+                                        </tr>
+                                  {% endfor %}
+                                
+                                </tbody>
+                              </table>
+                              <h5 ><b class="color-primary float-left">BsS.</b></h5>
                 
             </div>
             <h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="http://localhost:8000/pizzeria/finalizar" class="btn-primaryc plr-25"><b>Terminar orden</b></a></h6>

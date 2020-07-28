@@ -36,9 +36,9 @@ class ClienteForm(forms.Form):
         (9, '9'),
         (10, '10'),
     )
-    nombre = forms.CharField(label='Nombre')
-    apellido = forms.CharField(label='Apellido')
-    cantidad = forms.IntegerField(widget=forms.Select(choices=OPTIONS))
+    nombre = forms.CharField(label='Nombre', widget= forms.TextInput(attrs= { 'class': 'form-control'}))
+    apellido = forms.CharField(label='Apellido', widget= forms.TextInput(attrs= { 'class': 'form-control'}))
+    pizzas = forms.IntegerField(widget=forms.Select(choices=OPTIONS, attrs= { 'class': 'form-control'}))
 
 """class ClientForm(forms.ModelForm):
     class Meta:

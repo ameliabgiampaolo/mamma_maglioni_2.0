@@ -14,15 +14,15 @@ def cliente(request):
         form = ClienteForm(request.POST)
         if form.is_valid():
             cliente = Cliente.objects.create_cliente(form.cleaned_data.get('nombre'), form.cleaned_data.get('apellido'))
-            return redirect('order', cliente.id, form.cleaned_data.get('cantidad'))
+            return redirect('order', cliente.id, form.cleaned_data.get('pizzas'))
     else:
         form = ClienteForm()
 
     return render(request, 'pizzeria/cliente.html', { 'form': form })
 
-def order(request, cliente_id, cantidad):
+def order(request, cliente_id, pizzas):
     date = datetime.date.today()
-    OrderFormset = formset_factory(OrderForm,extra=cantidad)
+    OrderFormset = formset_factory(OrderForm,extra=pizzas)
     aux = 1 #variable para controlar cada pizza
 
     if request.method == 'POST':
@@ -38,7 +38,7 @@ def order(request, cliente_id, cantidad):
                 else:
                     pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), None, pedido, aux)
 
-                aux += aux
+                aux += 1
             
             return redirect('resumen', pedido.id)
     else:
