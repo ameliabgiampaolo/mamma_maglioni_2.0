@@ -27,14 +27,14 @@ class Pedido(models.Model):
     objects = PedidoManager()
 
     def __str__(self):
-        return '#' + str(self.id) + ' | ' + self.fecha + ' | fk_cliente = ' + str(self.fk_cliente)
+        return '#' + str(self.id) + ' | ' + str(self.fecha) + ' | fk_cliente = ' + str(self.fk_cliente)
  
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=12)
     precio = models.DecimalField(max_digits=4, decimal_places=2)
 
     def __str__(self):
-        return '#' + str(self.id) + ' | ' + self.nombre + ' | ' + str(self.precio)
+        return '#' + str(self.id) + ' | ' + str(self.nombre) + ' | ' + str(self.precio)
 
 class Pizza(models.Model):
     size  = models.CharField(max_length=9)
