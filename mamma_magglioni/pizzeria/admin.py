@@ -11,7 +11,13 @@ class PizzaAdmin(admin.ModelAdmin):
     list_display  =  ( 'id','size', 'precio', )
     list_per_page = 10
 
-admin.site.register(Cliente)
+class ClienteAdmin(admin.ModelAdmin):
+    list_display  =  ( 'id','nombre', 'apellido',  )
+    list_filter = ['nombre', 'apellido' ]
+    search_fields = ['nombre', 'apellido',]
+    list_per_page = 10
+
+admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Pedido)
 admin.site.register(Ingrediente)
 admin.site.register(Pizza, PizzaAdmin)
