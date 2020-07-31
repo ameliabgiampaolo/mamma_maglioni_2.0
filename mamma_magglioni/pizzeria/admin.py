@@ -16,6 +16,12 @@ class PizzaAdmin(admin.ModelAdmin):
         extra_context = {'title': 'Pizzas'}
         return super(PizzaAdmin, self).changelist_view(request, extra_context=extra_context)
 
+class IngreAdmin(admin.ModelAdmin):
+    list_display  =  ( 'id','nombre', 'precio', )
+    def changelist_view(self, request, extra_context=None):
+        extra_context = {'title': 'Ingredientes'}
+        return super(IngreAdmin, self).changelist_view(request, extra_context=extra_context)
+
 class ClienteAdmin(admin.ModelAdmin):
     list_display  =  ( 'id','nombre', 'apellido',  )
     list_filter = ['nombre', 'apellido' ]
@@ -36,6 +42,6 @@ class PedidoAdmin(admin.ModelAdmin):
 
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Pedido, PedidoAdmin)
-admin.site.register(Ingrediente)
+admin.site.register(Ingrediente, IngreAdmin)
 admin.site.register(Pizza, PizzaAdmin)
 admin.site.register(Pizza_ing , Pizza_ingAdmin)
