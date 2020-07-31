@@ -6,8 +6,6 @@
         {% bootstrap_css %}
         {% load static %}
 
-
-
         <title>Mama Magglione</title>
         <link rel="icon" href="{% static "pizzeria/images/heading_logo.png" %}" type="image/png" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,6 +21,7 @@
         <link href="{% static "pizzeria/plugin-frameworks/swiper.css" %}" rel="stylesheet">
         <link href="{% static "pizzeria/fonts/ionicons.css" %}" rel="stylesheet">
         <link href="{% static "pizzeria/common/styles.css" %}" rel="stylesheet">
+        <link href="{% static "pizzeria/common/style.css" %}" rel="stylesheet">
 </head>
 <body>
 
@@ -34,7 +33,7 @@
 
                 <ul class="main-menu font-mountainsre" id="main-menu">
                         <li><a href="04_blog.html"></a></li>
-                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="http://localhost:8000/pizzeria/">HOME</a></li>
                         <li><a href="04_blog.html"></a></li>
                         <li><a href="03_menu.html">SERVICIOS</a></li>
                 </ul>
@@ -49,7 +48,7 @@
     <div class="container h-100">
             <div class="dplay-tbl">
                     <div class="dplay-tbl-cell center-text color-white pt-90">
-                            <h2 class="mt-30 mb-15">Pedido Mama Magglione</h2>
+                            <h2 class="mt-30 mb-15">Resumen de tu pedido</h2>
                     </div><!-- dplay-tbl-cell -->
             </div><!-- dplay-tbl -->
     </div><!-- container -->
@@ -58,91 +57,91 @@
 {% block content %}
 <section>
     <div class="container">
-            <div class="heading">
-                    <img class="heading-img" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
-                    <h2>Resumen de tu pedido</h2> 
-                    <br></br>
-                    
-                    <th><strong>Fecha</strong></th>
-                    <th>{{pedido.fecha}}</th>
-                    <br></br>
-                
-                                        {% load common %}
-                                        {% set num = 0 %}
-                                        {% set aux = 0 %} 
+        <div class="heading">
+                <h2>Datos personales</h2> 
+                <br></br>
 
-
-
-                    
-                                <table class="table table-bordered">
-
-                                <thead>
-                                  <tr>
-                                    <th scope="col-md-21">Cliente</th>
-                                    <th colspan="21" >Pizzas</th>
-                                    
+                <table class="table table-bordered">
+                        <thead>
+                                <tr>
+                                    <th scope="col" class="table-active">Fecha</th>
+                                    <td>{{pedido.fecha}}</td>
                                   </tr>
-                                </thead>
-                                <tbody>
-                                                <tr>
-                                   <th rowspan="21">{{cliente.nombre|add:" "|add:cliente.apellido}}</th> 
-                                   {% for pizza in pizza_ing %}
-                                   {% if pizza.num_pizza != num %}
-                                   {% set num = pizza.num_pizza %}
-                                        {% if pizza.fk_pizza_id == 1  %} 
-                                                     
-                                        <th rowspan="4">Personal</th> 
-                    
-                                        {% elif pizza.fk_pizza_id == 2 %}
-                                     
-                                        <th rowspan="4">Mediana</th>
-                                        
-                    
-                                        {% elif pizza.fk_pizza_id == 3 %}
-                                      
-                                        <th rowspan="4">Familiar</th>
-                                        
-                                       
-                                        {% endif %}
-                                        {% endif %}
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <th scope="row" class="table-active">Cliente</th>
+                                    <td rowspan="21">{{cliente.nombre|add:" "|add:cliente.apellido}}</td> 
+                                </tr>
+                        </tbody>
+                </table>
 
-                                  </tr>
-                                 
-                                  <tr>
-                                                {% if pizza.fk_ingrediente_id == 1 %} 
-                                                <td>Jamón</td>
-                                                
-                                                {% elif pizza.fk_ingrediente_id == 2 %}
-                                                <td>Champiñón</td>
-                                                
-                                                {% elif pizza.fk_ingrediente_id == 3 %}
-                                                <td>Pimentón</td>
-                                                
-                                                {% elif pizza.fk_ingrediente_id == 4 %}
-                                                <td>Doble queso</td>
-                                                
-                                                {% elif pizza.fk_ingrediente_id == 5 %}
-                                                <td>Aceituna</td>
-                                                
-                                                {% elif pizza.fk_ingrediente_id == 6 %}
-                                                <td>Pepperoni</td>
-                                                
-                                                {% elif pizza.fk_ingrediente_id == 7 %}
-                                                <td>Salchichón</td>
-                                                
-                                                {% else%}
-                                                <td>Sin ingredientes</td>
-                                                {% endif %}
-                                        </tr>
-                                  {% endfor %}
-                                
-                                </tbody>
-                              </table>
-                              <h5 ><b class="color-primary float-left">BsS.</b></h5>
+                <br></br>
                 
-            </div>
-            <h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="http://localhost:8000/pizzeria/finalizar" class="btn-primaryc plr-25"><b>Terminar orden</b></a></h6>
-    </div>
+                <h2>Tu orden</h2> 
+                <br></br>
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                {% load common %}
+                {% set num = 0 %}
+                {% set aux = 0 %} 
+
+                {% for pizza in pizza_ing %}
+                {% if pizza.num_pizza != num %}
+                {% set num = pizza.num_pizza %}
+                
+
+                <table class="table table-bordered table-striped mb-0">
+                        <tbody>
+                                {% if pizza.fk_pizza_id == 1  %} 
+                                <th colspan="7" class="table-active">Personal<h6><b class="color-primary float-right">BsS. 10.00</b></h6></th> 
+                    
+                                {% elif pizza.fk_pizza_id == 2 %}  
+                                <th colspan="7" class="table-active">Medianas<h6><b class="color-primary float-right">BsS. 16.00</b></th>
+
+                                {% elif pizza.fk_pizza_id == 3 %}    
+                                <th colspan="7" class="table-active">Familiar<h6><b class="color-primary float-right">BsS. 20.00</b></th>
+                                                    
+                                {% endif %}
+                {% endif %}
+
+                        <tr>
+                                {% if pizza.fk_ingrediente_id == 1 %} 
+                                <td>Jamón<h6><b class="color-primary float-right">BsS. 4.00</b></td>
+                                                
+                                {% elif pizza.fk_ingrediente_id == 2 %}
+                                <td>Champiñón<h6><b class="color-primary float-right">BsS. 3.50</b></td>
+                                                
+                                {% elif pizza.fk_ingrediente_id == 3 %}
+                                <td>Pimentón<h6><b class="color-primary float-right">BsS. 3.00</b></td>
+                                                
+                                {% elif pizza.fk_ingrediente_id == 4 %}
+                                <td>Doble queso<h6><b class="color-primary float-right">BsS. 4.00</b></td>
+                                                
+                                {% elif pizza.fk_ingrediente_id == 5 %}
+                                <td>Aceituna<h6><b class="color-primary float-right">BsS. 5.75</b></td>
+                                                
+                                {% elif pizza.fk_ingrediente_id == 6 %}
+                                <td>Pepperoni<h6><b class="color-primary float-right">BsS. 3.85</b></td>
+                                                
+                                {% elif pizza.fk_ingrediente_id == 7 %}
+                                <td>Salchichón<h6><b class="color-primary float-right">BsS. 6.25</b></td>
+                                                
+                                {% else%}
+                                <td>Sin ingredientes</td>
+                                        
+                                {% endif %}
+                        </tr>
+                        
+                {% endfor %}
+                </tbody>
+                </table>
+                </div>
+                <br></br>
+                <img class="heading-img float-left" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
+                <h5><b class="color-primary float-left">Total pedido BsS.</b></h5>
+                </div>
+                <h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="http://localhost:8000/pizzeria/finalizar" class="btn-primaryc plr-25"><b>Terminar orden</b></a></h6>
+         </div>
 </section>
 {% endblock content %}
 
