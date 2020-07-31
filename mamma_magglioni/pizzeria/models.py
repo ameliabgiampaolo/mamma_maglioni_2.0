@@ -37,7 +37,7 @@ class Ingrediente(models.Model):
         return '#' + str(self.id) + ' | ' + str(self.nombre) + ' | ' + str(self.precio)
 
 class Pizza(models.Model):
-    size  = models.CharField(max_length=9, verbose_name="Tamaño")
+    size  = models.CharField(max_length=9, verbose_name="Tamaño Pizza")
     precio = models.IntegerField()
     adicionales = models.ManyToManyField(
         Ingrediente,
