@@ -168,9 +168,17 @@
                         </div><!-- row-->
                         <br>
                         {% endfor %}
+                        
+                        <script>
+                                function clicked(e)
+                                {
+                                        if(!confirm('¿Estas seguro que deseas continuar?'))e.preventDefault();
+                                }
+                        </script>
+                        
                         <div class="row spacer">
-                            <div class="col-4 offset-4">
-                                <button type="submit" class="btn btn-block btn-primary">Registrar pedido</button>
+                            <div class="col-5 offset-5">
+                                <button type="submit" onclick="clicked(event)"  class="btn-primaryc plr-25">Registrar pedido</button>
                             </div>
                         </div>
                         </form>
