@@ -7,8 +7,8 @@ class ClienteManager(models.Manager):
         return cliente
 
 class Cliente(models.Model):
-    nombre = models.CharField(max_length=15)
-    apellido = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=15, verbose_name="Nombre Cliente")
+    apellido = models.CharField(max_length=20, verbose_name="Apellido Cliente")
     objects = ClienteManager()
 
     def __str__(self):
@@ -23,21 +23,21 @@ class PedidoManager(models.Manager):
 class Pedido(models.Model):
     fecha = models.DateField('fecha del pedido')
    # precio_total = models.DecimalField(max_digits=8, decimal_places=2)
-    fk_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    fk_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Cliente")
     objects = PedidoManager()
 
     def __str__(self):
         return '#' + str(self.id) + ' | ' + str(self.fecha) + ' | fk_cliente = ' + str(self.fk_cliente)
  
 class Ingrediente(models.Model):
-    nombre = models.CharField(max_length=12)
+    nombre = models.CharField(max_length=12, verbose_name="Ingrediente")
     precio = models.DecimalField(max_digits=4, decimal_places=2)
 
     def __str__(self):
         return '#' + str(self.id) + ' | ' + str(self.nombre) + ' | ' + str(self.precio)
 
 class Pizza(models.Model):
-    size  = models.CharField(max_length=9)
+    size  = models.CharField(max_length=9, verbose_name="Tamaño")
     precio = models.IntegerField()
     adicionales = models.ManyToManyField(
         Ingrediente,
@@ -54,9 +54,11 @@ class Pizza_ingManager(models.Manager):
         return pizza_ing
 
 class Pizza_ing(models.Model):
-    fk_pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-    fk_ingrediente = models.ForeignKey(Ingrediente, null=True, blank=True, on_delete=models.CASCADE)
-    fk_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    class Meta:
+        verbose_name_plural = "Ventas"
+    fk_pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE, verbose_name="Pizzas")
+    fk_ingrediente = models.ForeignKey(Ingrediente, null=True, blank=True, on_delete=models.CASCADE,verbose_name="Ingredientes")
+    fk_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, verbose_name="Pedidos")
     num_pizza = models.IntegerField(default=1)
     objects = Pizza_ingManager()
 
