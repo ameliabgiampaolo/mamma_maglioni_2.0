@@ -80,3 +80,6 @@ def delivery(request, fk_cliente_id):
     cliente = Cliente.objects.get(id=fk_cliente_id)
     context = {'cliente': cliente}
     return render(request, 'pizzeria/delivery.html', context)
+
+def finalizar_delivery(request):
+    return render(request, 'pizzeria/finalizar_delivery.html')
