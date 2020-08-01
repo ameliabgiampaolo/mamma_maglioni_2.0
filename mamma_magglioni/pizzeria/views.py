@@ -28,7 +28,9 @@ def calcular_precio(pizza_ing):
         if pizza_ing[i].num_pizza == num_pizza:
             precio_pizzas += pizza_ing[i].fk_pizza.precio
             num_pizza += 1
-        precio_ingredientes += pizza_ing[i].fk_ingrediente.precio
+
+        if pizza_ing[i].fk_ingrediente != None:
+            precio_ingredientes += pizza_ing[i].fk_ingrediente.precio
     
     return precio_pizzas + precio_ingredientes
 
