@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <!-- Cargando librerias para bootstrap 4 -->
+        {% load bootstrap4 %}
+        {% bootstrap_css %}
+        {% load static %}
+
+
+        <title>Mama Magglione</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+        <link rel="stylesheet" href="{% static "pizzeria/fonts/beyond_the_mountains-webfont.css" %}" type="text/css"/>
+
+        <!-- Stylesheets -->
+        <link href="{% static "pizzeria/plugin-frameworks/bootstrap.min.css" %}" rel="stylesheet">
+        <link href="{% static "pizzeria/plugin-frameworks/swiper.css" %}" rel="stylesheet">
+        <link href="{% static "pizzeria/fonts/ionicons.css" %}" rel="stylesheet">
+        <link href="{% static "pizzeria/common/styles.css" %}" rel="stylesheet">
+</head>
+<body>
+
+<header>
+        <div class="container">
+                <a class="logo" href="#"><img src="{% static "pizzeria/images/heading_logo.png" %}" alt="Logo"></a>
+
+                <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
+
+                <ul class="main-menu font-mountainsre" id="main-menu">
+                        <li><a href="04_blog.html"></a></li>
+                        <li><a href="/pizzeria">HOME</a></li>
+                        <li><a href="04_blog.html"></a></li>
+                        <li><a href="03_menu.html">SERVICIOS</a></li>
+                </ul>
+
+                <div class="clearfix"></div>
+        </div><!-- container -->
+</header>
+
+<section class="bg-7 h-500x main-slider pos-relative">
+        <div class="triangle-up pos-bottom"></div>
+        <div class="container h-100">
+                <div class="dplay-tbl">
+                        <div class="dplay-tbl-cell center-text color-white pt-90">
+                                <h5><b>LA MEJOR EN TODA CARACAS</b></h5>
+                                <h2 class="mt-30 mb-15">Contacto Delivery</h2>
+                        </div><!-- dplay-tbl-cell -->
+                </div><!-- dplay-tbl -->
+        </div><!-- container -->
+</section>
+
+<section class="story-area left-text center-sm-text">
+        <div class="container">
+                <div class="heading">
+                        <img class="heading-img float-center" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
+                        <h2>Contacto</h2>
+                        <p class="mx-w-700x mlr-auto">Por favor, llena el siguiente formulario
+                            de contacto para poder saber donde te encuentras y hacer llegar
+                            el pedido en tus manos.
+                        </p>
+                </div>
+
+                <form class="form-style-1 placeholder-1">
+                        <div class="row">
+                                <div class="col-md-4"> <input class="mb-20" type="text" value=" {{ cliente.nombre }}"></div>
+                                <div class="col-md-4"> <input class="mb-20" type="text" value=" {{ cliente.apellido }}"></div>
+                                <div class="col-md-4"> <input class="mb-20" type="text" placeholder="Teléfono personal"></div>
+                                <div class="col-md-4"> <input class="mb-20" type="text" placeholder="Nombre de su casa/edificio"></div>
+                                <div class="col-md-4"> <input class="mb-20" type="text" placeholder="Email"></div> 
+                                <div class="col-md-4"> <input class="mb-20" type="text" placeholder="Teléfono Fijo"></div> 
+                                <div class="col-md-12"><input class="mb-20" type="text" placeholder="Dirección completa"></div>                              
+                                <div class="col-md-12">
+                                        <textarea class="h-100x ptb-20" placeholder="Información Adicional: puntos de referencia, comentarios"></textarea></div>
+                        </div><!-- row -->
+                        <h6 class="center-text mtb-30"><a href="http://localhost:8000/pizzeria/finalizar_delivery" class="btn-primaryc plr-25"><b>Continuar</b></a></h6>
+                </form>
+        </div>
+</section>
+
+</body>
+
+<footer class="pb-50  pt-70 pos-relative">
+        <div class="pos-top triangle-bottom"></div>
+        <div class="container-fluid">
+                <h1 class="mt-30 mb-15">Mama Magglione</h1>
+		<br></br>
+                <div class="pt-30">
+                       
+</footer>
+
+<!-- SCIPTS -->
+<script src="{% static "pizzeria/plugin-frameworks/jquery-3.2.1.min.js" %}"></script>
+<script src="{% static "pizzeria/plugin-frameworks/bootstrap.min.js" %}"></script>
+<script src="{% static "pizzeria/plugin-frameworks/swiper.js" %}"></script>
+<script src="{% static "pizzeria/common/scripts.js" %}"></script>
+
+<!-- JS y jQuery Bootstrap -->
+{% bootstrap_javascript jquery='full' %}
+</body>
+</html>

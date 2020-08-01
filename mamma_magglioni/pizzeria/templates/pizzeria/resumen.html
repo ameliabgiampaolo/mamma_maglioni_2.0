@@ -136,11 +136,20 @@
                 </tbody>
                 </table>
                 </div>
-                <br></br>
+                
                 <img class="heading-img float-left" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
                 <h5><b class="color-primary float-left">Total pedido BsS. {{ pedido.precio_total }}</b></h5>
                 </div>
-                <h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="http://localhost:8000/pizzeria/finalizar" class="btn-primaryc plr-25"><b>Terminar orden</b></a></h6>
+                <div style="text-align: center;">
+                        <h6 class="linea"><a href="http://localhost:8000/pizzeria/finalizar" class="btn-primaryc plr-25"><b>Terminar orden</b></a></h6>
+                        <h6 class="linea"><a href="{% url 'delivery' pedido.fk_cliente_id%}" class="btn-primaryc plr-25"><b>Enviar orden por Delivery</b></a></h6>
+                </div>
+
+                <style type="text/css">
+                        .linea{
+                        display: inline-block;
+                        }
+                 </style>
          </div>
 </section>
 {% endblock content %}
