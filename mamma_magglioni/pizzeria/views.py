@@ -20,8 +20,17 @@ def cliente(request):
 
     return render(request, 'pizzeria/cliente.html', { 'form': form })
 
-def calcular_precio(pedido, pizza_ing):
-    pass
+def calcular_precio(pizza_ing):
+    precio_pizzas = 0
+    precio_ingredientes = 0
+    num_pizza = 1
+    for i in range(len(pizza_ing)):
+        if pizza_ing[i].num_pizza == num_pizza:
+            precio_pizzas += pizza_ing[i].fk_pizza.precio
+            num_pizza += 1
+        precio_ingredientes += pizza_ing[i].fk_ingrediente.precio
+    
+    return precio_pizzas + precio_ingredientes
 
 def order(request, cliente_id, pizzas):
     date = datetime.date.today()
@@ -45,6 +54,10 @@ def order(request, cliente_id, pizzas):
                     pizzas.append(pizza_ing)
 
                 aux += 1
+            
+            precio_total = calcular_precio(pizzas)
+            pedido.precio_total = precio_total
+            pedido.save()
             
             return redirect('resumen', pedido.id)
     else:
