@@ -58,7 +58,7 @@ def order(request, cliente_id, pizzas):
             precio_total = calcular_precio(pizzas)
             pedido.precio_total = precio_total
             pedido.save()
-            
+
             return redirect('resumen', pedido.id)
     else:
         formset = OrderFormset()
