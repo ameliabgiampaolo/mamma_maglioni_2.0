@@ -1,4 +1,5 @@
 from django import template
+import random
 register = template.Library()
 
 class SetVarNode(template.Node):
@@ -26,3 +27,9 @@ def set_var(parser, token):
         raise template.TemplateSyntaxError("'set' tag must be of the form: {% set <var_name> = <var_value> %}")
 
     return SetVarNode(parts[1], parts[3])
+
+@register.simple_tag
+def random_int(a, b=None):
+    if b is None:
+        a, b = 0, a
+    return random.randint(a, b)
