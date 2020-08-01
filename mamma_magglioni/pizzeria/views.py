@@ -20,10 +20,14 @@ def cliente(request):
 
     return render(request, 'pizzeria/cliente.html', { 'form': form })
 
+def calcular_precio(pedido, pizza_ing):
+    pass
+
 def order(request, cliente_id, pizzas):
     date = datetime.date.today()
     OrderFormset = formset_factory(OrderForm,extra=pizzas)
     aux = 1 #variable para controlar cada pizza
+    pizzas = []
 
     if request.method == 'POST':
         formset = OrderFormset(request.POST)
@@ -35,8 +39,10 @@ def order(request, cliente_id, pizzas):
                 if ingredientes != []:
                     for i in range(len(ingredientes)):
                         pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), Ingrediente.objects.get(id=ingredientes[i]), pedido, aux)
+                        pizzas.append(pizza_ing)
                 else:
                     pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), None, pedido, aux)
+                    pizzas.append(pizza_ing)
 
                 aux += 1
             

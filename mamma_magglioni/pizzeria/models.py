@@ -22,7 +22,7 @@ class PedidoManager(models.Manager):
 
 class Pedido(models.Model):
     fecha = models.DateField('fecha del pedido')
-   # precio_total = models.DecimalField(max_digits=8, decimal_places=2)
+    precio_total = models.FloatField(default=0,null=True)
     fk_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Cliente")
     objects = PedidoManager()
 
