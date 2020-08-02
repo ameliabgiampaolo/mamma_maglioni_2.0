@@ -85,3 +85,6 @@ def delivery(request, fk_cliente_id):
 
 def finalizar_delivery(request):
     return render(request, 'pizzeria/finalizar_delivery.html')
+
+def reporte(request):
+    return render(request,'pizzeria/reportes.html')
