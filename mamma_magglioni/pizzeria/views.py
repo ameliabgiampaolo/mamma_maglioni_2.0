@@ -119,3 +119,6 @@ def reporte4(request):
         ventas_ingredientes = cursor.fetchall()
     context = {'ingredientes': ventas_ingredientes}
     return render(request,'pizzeria/reporte4.html',context)
+
+def reporte5(request):
+    return render(request,'pizzeria/reporte5.html')
