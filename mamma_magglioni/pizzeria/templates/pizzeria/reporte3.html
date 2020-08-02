@@ -6,25 +6,24 @@
         <div class="container">
                 <div class="heading">
                         <img class="heading-img" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
-                        <h2>Reporte general de ventas</h2>
+                        <h2>Reporte de ventas por tamaño de pizza</h2>
                 </div>
                     <div>
+                        <h4>Ventas por pizzas</h4>
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Fecha venta</th>
-                                <th scope="col">Nombre cliente</th>
-                                <th scope="col">Apellido cliente</th>
+                                <th scope="col">Tamaño</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Generado</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {%for i in ventas%}
+                            {% for i in pizzas %}
                             <tr>
-                                <td>{{i.id}}</td>
-                                <td>{{i.fecha}}</td>
-                                <td>{{i.fk_cliente.nombre}}</td>
-                                <td>{{i.fk_cliente.apellido}}</td>
+                                    <td>{{i.0}}</td>
+                                    <td>{{i.1}}</td>
+                                    <td>{{i.2}}</td>
                             </tr>
                             {% endfor %}
                             </tbody>

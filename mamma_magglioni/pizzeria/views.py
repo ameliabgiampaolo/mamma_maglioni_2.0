@@ -92,16 +92,30 @@ def reporte(request):
     return render(request,'pizzeria/reportes.html')
 
 def reporte1(request):
+    ventas = Pedido.objects.all().order_by('id')
+    context = {'ventas': ventas}
+    return render(request,'pizzeria/reporte1.html', context)
+
+def reporte2(request):
+    data = Pizza_ing.objects.all().order_by('fk_pedido')
+    return render(request,'pizzeria/reporte2.html')
+
+def reporte3(request):
     with connection.cursor() as cursor:
         cursor.execute("""SELECT p.size,
                         (SELECT COUNT(i.fk_pizza_id) FROM pizzeria_pizza_ing i WHERE i.fk_pizza_id = p.id)"Unidades vendidas",
                         (SELECT COUNT(f.fk_pizza_id)*p.precio FROM pizzeria_pizza_ing f WHERE f.fk_pizza_id = p.id)"Total generado"
                         FROM pizzeria_pizza p;""")
         ventas_pizza = cursor.fetchall()
+    context = {'pizzas': ventas_pizza}
+    return render(request,'pizzeria/reporte3.html',context)
+
+def reporte4(request):
+    with connection.cursor() as cursor:
         cursor.execute("""SELECT i.nombre,
                           (SELECT COUNT(v.fk_ingrediente_id) FROM pizzeria_pizza_ing v WHERE v.fk_ingrediente_id = i.id)"Unidades Vendidas",
                           (SELECT COUNT(v.fk_ingrediente_id)*i.precio FROM pizzeria_pizza_ing v WHERE v.fk_ingrediente_id = i.id)"Total generado"
                           FROM pizzeria_ingrediente i;""")
         ventas_ingredientes = cursor.fetchall()
-    context = {'pizzas': ventas_pizza, 'ingredientes': ventas_ingredientes}
-    return render(request,'pizzeria/reporte1.html', context)
+    context = {'ingredientes': ventas_ingredientes}
+    return render(request,'pizzeria/reporte4.html',context)

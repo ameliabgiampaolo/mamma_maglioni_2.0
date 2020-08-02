@@ -11,4 +11,7 @@ urlpatterns = [
     path('delivery/<int:fk_cliente_id>', views.delivery, name='delivery'),
     path('reporte', views.reporte, name='reporte'),
     path('reporte1', views.reporte1, name='reporte1'),
+    path('reporte2', views.reporte2, name='reporte2'),
+    path('reporte3', views.reporte3, name='reporte3'),
+    path('reporte4', views.reporte4, name='reporte4'),
 ]

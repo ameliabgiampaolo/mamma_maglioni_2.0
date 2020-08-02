@@ -1,0 +1,34 @@
+{% extends "pizzeria/base.html" %}
+{% load static %}
+
+{% block content %}
+<section>
+        <div class="container">
+                <div class="heading">
+                        <img class="heading-img" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
+                        <h2>Reporte general de ventas por ingredientes</h2>
+                    <div>
+                        <h4>Ventas por ingredientes</h4>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Generado</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in ingredientes %}
+                                <tr>
+                                        <td>{{i.0}}</td>
+                                        <td>{{i.1}}</td>
+                                        <td>{{i.2}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- row -->
+        </div><!-- container -->
+</section>
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends "pizzeria/base.html" %}
+{% load static %}
+
+{% block content %}
+<section>
+        <div class="container">
+                <div class="heading">
+                        <img class="heading-img" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
+                        <h2>Lista de ventas realizadas por dia</h2>
+                </div>
+                <div>
+                    
+                    <h4>Ventas Para la fecha </h4>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Generado</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                    <td>laber</td>
+                                    <td>label</td>
+                                    <td>label</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                </div><!-- row -->
+        </div><!-- container -->
+</section>
+{% endblock content %}
