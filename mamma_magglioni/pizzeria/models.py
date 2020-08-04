@@ -25,9 +25,8 @@ class Pedido(models.Model):
     precio_total = models.FloatField(default=0,null=True)
     fk_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, verbose_name="Cliente")
     objects = PedidoManager()
-
     def __str__(self):
-        return '#' + str(self.id) + ' | ' + str(self.fecha) + ' | fk_cliente = ' + str(self.fk_cliente)
+        return '#' + str(self.id) + ' | ' + str(self.fecha) +' | ' + str(self.precio_total) + ' | fk_cliente = ' + str(self.fk_cliente)
  
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=12, verbose_name="Ingrediente")

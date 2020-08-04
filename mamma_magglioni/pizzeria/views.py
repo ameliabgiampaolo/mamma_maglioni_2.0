@@ -97,8 +97,13 @@ def reporte1(request):
     return render(request,'pizzeria/reporte1.html', context)
 
 def reporte2(request):
-    data = Pizza_ing.objects.all().order_by('fk_pedido')
-    return render(request,'pizzeria/reporte2.html')
+    fechas = Pedido.objects.order_by('fecha').values('fecha').distinct()
+    pedidos = Pedido.objects.all()
+    test = Pizza_ing.objects.all()
+    for pedido in test:
+        print(pedido)
+    context = {'fechas': fechas,'pedidos': pedidos}
+    return render(request,'pizzeria/reporte2.html',context)
 
 def reporte3(request):
     with connection.cursor() as cursor:
@@ -121,4 +126,8 @@ def reporte4(request):
     return render(request,'pizzeria/reporte4.html',context)
 
 def reporte5(request):
-    return render(request,'pizzeria/reporte5.html')
+    nombres = Cliente.objects.values('nombre','apellido').distinct()
+    for nombre in nombres:
+        print(nombre)
+    context = {'nombres': nombres}
+    return render(request,'pizzeria/reporte5.html', context)
