@@ -8,6 +8,34 @@
                         <img class="heading-img" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
                         <h2>Lista de ventas por clientes</h2>
                 </div>
+                <div>
+                        {%for i in nombres%}
+                            <h4>Ventas realizadas al cliente: </h4> <h3>{{i.fk_cliente.nombre}} {{i.fk_cliente.apellido}}</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Fecha Venta</th>
+                                    <th scope="col">Pizzas</th>
+                                    <th scope="col">Ingredientes</th>
+                                    <th scope="col">Monto total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {%for j in pedidos%}
+                                    <tr>
+                                        {% if i.id == j.fk_pedido.id  %} 
+                                            <td>{{j.fk_pedido.fecha}}</td>
+                                            <td>{{j.fk_pizza.size}}</td>
+                                            <td>{{j.fk_ingrediente.nombre}}</td>
+                                            <td>{{j.fk_pedido.precio_total}}</td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+ 
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                    </div>
                 </div><!-- row -->
         </div><!-- container -->
 </section>

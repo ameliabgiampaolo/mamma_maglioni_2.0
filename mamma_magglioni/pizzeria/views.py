@@ -126,8 +126,11 @@ def reporte4(request):
     return render(request,'pizzeria/reporte4.html',context)
 
 def reporte5(request):
-    nombres = Cliente.objects.values('nombre','apellido').distinct()
+    nombres = Pedido.objects.distinct()
+    pedidos = Pizza_ing.objects.all()
     for nombre in nombres:
         print(nombre)
-    context = {'nombres': nombres}
+    for pedido in pedidos:
+        print(pedido)
+    context = {'nombres': nombres,'pedidos': pedidos}
     return render(request,'pizzeria/reporte5.html', context)
