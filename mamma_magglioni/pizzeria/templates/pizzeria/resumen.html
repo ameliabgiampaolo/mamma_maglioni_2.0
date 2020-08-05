@@ -32,11 +32,10 @@
                 <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
 
                 <ul class="main-menu font-mountainsre" id="main-menu">
-                        <li><a href="04_blog.html"></a></li>
-                        <li><a href="http://localhost:8000/pizzeria/">HOME</a></li>
-                        <li><a href="04_blog.html"></a></li>
-                        <li><a href="03_menu.html">SERVICIOS</a></li>
-                        <li><a href="http://localhost:8000/pizzeria/reporte">REPORTES</a></li>
+                                <li><a href="04_blog.html"></a></li>
+                                <li><a href="/../pizzeria/">HOME</a></li>
+                                <li><a href="/../pizzeria/cliente">SERVICIOS</a></li>
+                                <li><a href="/../pizzeria/reporte">REPORTES</a></li>
                 </ul>
 
                 <div class="clearfix"></div>
@@ -141,7 +140,7 @@
                 <h5><b class="color-primary float-left">Total pedido BsS. {{ pedido.precio_total }}</b></h5>
                 </div>
                 <div style="text-align: center;">
-                        <h6 class="linea"><a href="http://localhost:8000/pizzeria/finalizar" class="btn btn-danger "><b>Terminar orden</b></a></h6>
+                        <h6 class="linea"><a href="../finalizar" class="btn btn-danger "><b>Terminar orden</b></a></h6>
                         <h6 class="linea"><a href="{% url 'delivery' pedido.fk_cliente_id%}" class="btn btn-success"><b>Enviar orden por Delivery</b></a></h6>
                 </div>
 
