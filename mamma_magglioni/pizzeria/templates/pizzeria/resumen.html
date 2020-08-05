@@ -81,6 +81,7 @@
                 
                 <h2>Tu orden</h2> 
                 <br></br>
+
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                 {% load common %}
                 {% set num = 0 %}
@@ -89,8 +90,6 @@
                 {% for pizza in pizza_ing %}
                 {% if pizza.num_pizza != num %}
                 {% set num = pizza.num_pizza %}
-                
-
                 <table class="table table-bordered table-striped mb-0">
                         <tbody>
                                 {% if pizza.fk_pizza_id == 1  %} 
@@ -150,7 +149,7 @@
                         .linea{
                         display: inline-block;
                         }
-                 </style>
+                </style>
          </div>
 </section>
 {% endblock content %}
