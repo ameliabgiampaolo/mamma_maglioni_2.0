@@ -21,7 +21,7 @@
                                 <tbody>
                                     {%for j in pedidos%}
                                     <tr>
-                                        {% if i.nombre == j.fk_cliente.nombre  %}
+                                        {% if i.nombre == j.fk_cliente.nombre and  i.apellido == j.fk_cliente.apellido %}
 
                                             <td>{{j.fecha}}</td>
                                             <td>{{j.precio_total}}</td>
