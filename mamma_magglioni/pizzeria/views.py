@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 from django.db.models.expressions import RawSQL
+from django.db.models import F
 from django.db import connection
 from .forms import OrderForm, ClienteForm
 from .models import Pedido, Pizza_ing, Cliente, Pizza, Ingrediente
@@ -104,8 +105,6 @@ def reporte2(request):
     fechas = Pedido.objects.order_by('fecha').values('fecha').distinct()
     pedidos = Pedido.objects.all()
     test = Pizza_ing.objects.all()
-    for pedido in test:
-        print(pedido)
     context = {'fechas': fechas,'pedidos': pedidos}
     return render(request,'pizzeria/reporte2.html',context)
 
@@ -131,6 +130,6 @@ def reporte4(request):
 
 def reporte5(request):
     nombres = Cliente.objects.values('nombre','apellido').distinct()
-    pedidos = Pedido.objects.all()
+    pedidos = Pedido.objects.order_by(F('precio_total').desc(nulls_last=True))
     context = {'nombres': nombres,'pedidos': pedidos}
     return render(request,'pizzeria/reporte5.html', context)
