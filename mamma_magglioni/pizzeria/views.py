@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
+from django.db.models.expressions import RawSQL
+from django.db import connection
 from .forms import OrderForm, ClienteForm
 from .models import Pedido, Pizza_ing, Cliente, Pizza, Ingrediente
 from django.forms import formset_factory
@@ -85,3 +87,46 @@ def delivery(request, fk_cliente_id):
 
 def finalizar_delivery(request):
     return render(request, 'pizzeria/finalizar_delivery.html')
+
+def reporte(request):
+    return render(request,'pizzeria/reportes.html')
+
+def reporte1(request):
+    ventas = Pedido.objects.all().order_by('id')
+    context = {'ventas': ventas}
+    return render(request,'pizzeria/reporte1.html', context)
+
+def reporte2(request):
+    fechas = Pedido.objects.order_by('fecha').values('fecha').distinct()
+    pedidos = Pedido.objects.all()
+    test = Pizza_ing.objects.all()
+    for pedido in test:
+        print(pedido)
+    context = {'fechas': fechas,'pedidos': pedidos}
+    return render(request,'pizzeria/reporte2.html',context)
+
+def reporte3(request):
+    with connection.cursor() as cursor:
+        cursor.execute("""SELECT p.size,
+                        (SELECT COUNT(i.fk_pizza_id) FROM pizzeria_pizza_ing i WHERE i.fk_pizza_id = p.id)"Unidades vendidas",
+                        (SELECT COUNT(f.fk_pizza_id)*p.precio FROM pizzeria_pizza_ing f WHERE f.fk_pizza_id = p.id)"Total generado"
+                        FROM pizzeria_pizza p;""")
+        ventas_pizza = cursor.fetchall()
+    context = {'pizzas': ventas_pizza}
+    return render(request,'pizzeria/reporte3.html',context)
+
+def reporte4(request):
+    with connection.cursor() as cursor:
+        cursor.execute("""SELECT i.nombre,
+                          (SELECT COUNT(v.fk_ingrediente_id) FROM pizzeria_pizza_ing v WHERE v.fk_ingrediente_id = i.id)"Unidades Vendidas",
+                          (SELECT COUNT(v.fk_ingrediente_id)*i.precio FROM pizzeria_pizza_ing v WHERE v.fk_ingrediente_id = i.id)"Total generado"
+                          FROM pizzeria_ingrediente i;""")
+        ventas_ingredientes = cursor.fetchall()
+    context = {'ingredientes': ventas_ingredientes}
+    return render(request,'pizzeria/reporte4.html',context)
+
+def reporte5(request):
+    nombres = Cliente.objects.values('nombre','apellido').distinct()
+    pedidos = Pedido.objects.all()
+    context = {'nombres': nombres,'pedidos': pedidos}
+    return render(request,'pizzeria/reporte5.html', context)

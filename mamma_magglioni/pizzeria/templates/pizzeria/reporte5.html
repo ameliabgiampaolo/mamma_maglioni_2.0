@@ -1,0 +1,40 @@
+{% extends "pizzeria/base.html" %}
+{% load static %}
+
+{% block content %}
+<section>
+        <div class="container">
+                <div class="heading">
+                        <img class="heading-img" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
+                        <h2>Lista de ventas por clientes</h2>
+                </div>
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        {%for i in nombres%}
+                            <h4>Ventas realizadas al cliente: </h4> <h3>{{i.nombre}} {{i.apellido}}</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Fecha Venta</th>
+                                    <th scope="col">Monto total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {%for j in pedidos%}
+                                    <tr>
+                                        {% if i.nombre == j.fk_cliente.nombre and  i.apellido == j.fk_cliente.apellido %}
+
+                                            <td>{{j.fecha}}</td>
+                                            <td>{{j.precio_total}}</td>
+
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+ 
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                    </div>
+                </div><!-- row -->
+        </div><!-- container -->
+</section>
+{% endblock content %}
