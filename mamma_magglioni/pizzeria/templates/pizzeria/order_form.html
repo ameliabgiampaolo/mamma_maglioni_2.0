@@ -176,12 +176,19 @@
                                         if(!confirm('¿Estas seguro que deseas continuar?'))e.preventDefault();
                                 }
                         </script>
+
+                        <style type="text/css">
+                                .linea{
+                                display: inline-block;
+                                }
+                        </style>
+
+        <div style="text-align: center;">
+                <h6 class="linea"><a href="../../" class="btn btn-danger">Cancelar orden</a></h6>
+                <button type="submit" onclick="clicked(event)"  class="btn btn-success">Registrar pedido</button>
+        </div>
                         
-                        <div class="row spacer">
-                            <div class="col-5 offset-5">
-                                <button type="submit" onclick="clicked(event)"  class="btn-primaryc plr-25">Registrar pedido</button>
-                            </div>
-                        </div>
+
                         </form>
                 </div>
         </div><!-- container -->

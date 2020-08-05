@@ -48,22 +48,26 @@ def order(request, cliente_id, pizzas):
             pedido = Pedido.objects.create_pedido(date, Cliente.objects.get(id=cliente_id))
             for form in formset:
                 pizza = form.cleaned_data.get('pizza')
-                ingredientes = form.cleaned_data.get('ingredientes') 
-                if ingredientes != []:
-                    for i in range(len(ingredientes)):
-                        pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), Ingrediente.objects.get(id=ingredientes[i]), pedido, aux)
-                        pizzas.append(pizza_ing)
+                if pizza == None:
+                    formset = OrderFormset()
+                    return render(request, 'pizzeria/order_form.html', { 'formset': formset })
                 else:
-                    pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), None, pedido, aux)
-                    pizzas.append(pizza_ing)
+                    ingredientes = form.cleaned_data.get('ingredientes') 
+                    if ingredientes != []:
+                        for i in range(len(ingredientes)):
+                            pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), Ingrediente.objects.get(id=ingredientes[i]), pedido, aux)
+                            pizzas.append(pizza_ing)
+                    else:
+                        pizza_ing = Pizza_ing.objects.create_pizza_ing(Pizza.objects.get(id=pizza), None, pedido, aux)
+                        pizzas.append(pizza_ing)
 
-                aux += 1
-            
-            precio_total = calcular_precio(pizzas)
-            pedido.precio_total = precio_total
-            pedido.save()
+                    aux += 1
+                
+                precio_total = calcular_precio(pizzas)
+                pedido.precio_total = precio_total
+                pedido.save()
 
-            return redirect('resumen', pedido.id)
+                return redirect('resumen', pedido.id)
     else:
         formset = OrderFormset()
 

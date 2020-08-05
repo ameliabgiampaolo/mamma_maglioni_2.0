@@ -141,8 +141,8 @@
                 <h5><b class="color-primary float-left">Total pedido BsS. {{ pedido.precio_total }}</b></h5>
                 </div>
                 <div style="text-align: center;">
-                        <h6 class="linea"><a href="http://localhost:8000/pizzeria/finalizar" class="btn-primaryc plr-25"><b>Terminar orden</b></a></h6>
-                        <h6 class="linea"><a href="{% url 'delivery' pedido.fk_cliente_id%}" class="btn-primaryc plr-25"><b>Enviar orden por Delivery</b></a></h6>
+                        <h6 class="linea"><a href="http://localhost:8000/pizzeria/finalizar" class="btn btn-danger "><b>Terminar orden</b></a></h6>
+                        <h6 class="linea"><a href="{% url 'delivery' pedido.fk_cliente_id%}" class="btn btn-success"><b>Enviar orden por Delivery</b></a></h6>
                 </div>
 
                 <style type="text/css">
