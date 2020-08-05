@@ -6,11 +6,12 @@
         <div class="container">
                 <div class="heading">
                         <img class="heading-img" src="{% static "pizzeria/images/heading_logo.png" %}" alt="">
-                        <h2>Lista de ventas realizadas por dia</h2>
+                        <h2>Lista de ventas realizadas por día</h2>
                 </div>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                     {%for i in fechas%}
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <br></br>
                         <h4>Ventas Para la fecha {{i.fecha}}</h4>
                         <table class="table table-striped">
                             <thead>
@@ -37,5 +38,9 @@
                 </div>
                 </div><!-- row -->
         </div><!-- container -->
+        <br></br>
+        <div style="text-align: center;">
+                <h6><a href="../pizzeria/reporte" class="btn-primaryc plr-25"><b>Volver</b></a></h6>
+        </div>
 </section>
 {% endblock content %}

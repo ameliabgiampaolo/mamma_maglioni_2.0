@@ -10,7 +10,7 @@
                 </div>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         {%for i in nombres%}
-                            <h4>Ventas realizadas al cliente: </h4> <h3>{{i.nombre}} {{i.apellido}}</h3>
+                            <h4>{{i.nombre}} {{i.apellido}}</h4>
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -36,5 +36,9 @@
                     </div>
                 </div><!-- row -->
         </div><!-- container -->
+        <br></br>
+        <div style="text-align: center;">
+                <h6><a href="../pizzeria/reporte" class="btn-primaryc plr-25"><b>Volver</b></a></h6>
+        </div>
 </section>
 {% endblock content %}
