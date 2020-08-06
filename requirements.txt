@@ -3,7 +3,7 @@ Django==3.0.8
 django-bootstrap4==2.2.0
 gunicorn==20.0.4
 html5lib==0.999999999
-httplib2==0.11.3
+httplib2==0.18.0
 psycopg2==2.7.4
 PyInstaller==3.6
 PyJWT==1.5.3
