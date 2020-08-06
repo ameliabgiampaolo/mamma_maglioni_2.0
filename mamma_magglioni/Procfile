@@ -1,1 +1,1 @@
-web: gunicorn pizzeria.wsgi --log-file -
+web: gunicorn mamma_magglioni.wsgi --log-file -
