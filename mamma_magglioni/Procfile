@@ -1,1 +1,0 @@
-web: gunicorn mamma_magglioni.wsgi --log-file -
